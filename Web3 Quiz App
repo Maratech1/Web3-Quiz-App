@@ -1,0 +1,110 @@
+# File: web3_quiz_app.py
+
+def display_welcome():
+    """Displays the welcome message and instructions."""
+    print("\nWelcome to the Web3 Quiz App!")
+    print("Test your knowledge of Web3 and Blockchain basics.")
+    print("Answer each question by typing the option letter (a, b, c, or d).\n")
+
+def get_questions():
+    """Returns a list of quiz questions."""
+    return [
+        {"question": "What does Web3 primarily focus on?",
+         "options": {"a": "Centralized control", "b": "Decentralized networks", "c": "Mobile applications", "d": "Machine learning"},
+         "answer": "b"},
+        {"question": "Which of the following is a Web3 base technology?",
+         "options": {"a": "Blockchain", "b": "Cloud Computing", "c": "Internet of Things", "d": "Big Data"},
+         "answer": "a"},
+        {"question": "Which token standard is most commonly used for NFTs?",
+         "options": {"a": "ERC-20", "b": "ERC-721", "c": "ERC-1155", "d": "ERC-777"},
+         "answer": "b"},
+        {"question": "What does 'dApp' stand for?",
+         "options": {"a": "Decentralized App", "b": "Data Application", "c": "Dynamic Application", "d": "Distributed API"},
+         "answer": "a"},
+        {"question": "What is the primary programming language for Ethereum smart contracts?",
+         "options": {"a": "Python", "b": "Rust", "c": "Solidity", "d": "JavaScript"},
+         "answer": "c"},
+        {"question": "What does the term 'staking' mean in Web3?",
+         "options": {"a": "Buying crypto", "b": "Holding crypto", "c": "Lending crypto", "d": "Locking crypto to support a network"},
+         "answer": "d"},
+        {"question": "What is the native token of the Ethereum blockchain?",
+         "options": {"a": "BTC", "b": "ETH", "c": "SOL", "d": "DOT"},
+         "answer": "b"},
+        {"question": "Which consensus mechanism does Bitcoin use?",
+         "options": {"a": "Proof of Stake", "b": "Proof of Work", "c": "Delegated Proof of Stake", "d": "Byzantine Fault Tolerance"},
+         "answer": "b"},
+        {"question": "What is a DAO in the context of Web3?",
+         "options": {"a": "Digital Autonomous Organization", "b": "Decentralized Autonomous Organization", "c": "Distributed Algorithm Operator", "d": "Dynamic Access Optimization"},
+         "answer": "b"},
+        {"question": "What is the purpose of a blockchain oracle?",
+         "options": {"a": "Providing external data to smart contracts", "b": "Validating transactions", "c": "Storing large files", "d": "Mining tokens"},
+         "answer": "a"},
+        {"question": "Which Web3 term describes a unique and indivisible digital asset?",
+         "options": {"a": "NFT", "b": "ERC-20 token", "c": "Staking token", "d": "Hash"},
+         "answer": "a"},
+        {"question": "What does 'DeFi' stand for?",
+         "options": {"a": "Decentralized Finance", "b": "Digital Finance", "c": "Dynamic Finance", "d": "Distributed Finance"},
+         "answer": "a"},
+        {"question": "What is the purpose of a crypto wallet?",
+         "options": {"a": "Store fiat currency", "b": "Store private keys", "c": "Mine cryptocurrency", "d": "Validate blocks"},
+         "answer": "b"},
+        {"question": "Which blockchain is known for introducing smart contracts?",
+         "options": {"a": "Bitcoin", "b": "Ethereum", "c": "Cardano", "d": "Polkadot"},
+         "answer": "b"},
+        {"question": "What is a hash in blockchain technology?",
+         "options": {"a": "A digital signature", "b": "A cryptographic fingerprint of data", "c": "A type of token", "d": "A blockchain explorer"},
+         "answer": "b"},
+        {"question": "Which of the following is a Layer 2 scaling solution?",
+         "options": {"a": "Ethereum", "b": "Bitcoin", "c": "Polygon", "d": "Solana"},
+         "answer": "c"},
+        {"question": "What does the term 'metaverse' refer to?",
+         "options": {"a": "A type of cryptocurrency", "b": "A digital space where users interact in virtual environments", "c": "A type of blockchain", "d": "A programming language"},
+         "answer": "b"},
+        {"question": "What is the name of the first blockchain ever created?",
+         "options": {"a": "Bitcoin", "b": "Ethereum", "c": "Cardano", "d": "Litecoin"},
+         "answer": "a"},
+        {"question": "What does a private key allow a user to do?",
+         "options": {"a": "Create transactions", "b": "View public transactions", "c": "Access block explorers", "d": "Mine cryptocurrency"},
+         "answer": "a"},
+        {"question": "What is a blockchain fork?",
+         "options": {"a": "A new cryptocurrency", "b": "An update to the protocol that diverges the chain", "c": "A token airdrop", "d": "A staking mechanism"},
+         "answer": "b"},
+        # 10 More...
+    ]  # Extend this list to include 30 questions.
+
+def ask_question(question):
+    """Displays a question and captures the user's answer."""
+    print(f"\n{question['question']}")
+    for key, value in question["options"].items():
+        print(f"  {key}: {value}")
+    user_answer = input("\nYour answer (a, b, c, or d): ").strip().lower()
+    return user_answer
+
+def run_quiz():
+    """Main function to run the quiz."""
+    questions = get_questions()
+    score = 0
+    total_questions = len(questions)
+
+    for question in questions:
+        user_answer = ask_question(question)
+        if user_answer == question["answer"]:
+            print("Correct!\n")
+            score += 1
+        else:
+            print(f"Incorrect. The correct answer was {question['answer']}.\n")
+    
+    print(f"Quiz Complete! You scored {score}/{total_questions}.\n")
+
+def main():
+    """Entry point of the quiz app."""
+    display_welcome()
+    while True:
+        run_quiz()
+        restart = input("Would you like to take the quiz again? (yes/no): ").strip().lower()
+        if restart != "yes":
+            print("Thank you for playing the Web3 Quiz App!")
+            break
+
+if __name__ == "__main__":
+    main()
